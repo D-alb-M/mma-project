@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light"></html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up • MMA matrix</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+
+</head>
+
+<body>
+
+    <!-- Form where user can enter details and create and account. -->
+
+    <section class="section mt-6">
+        <div class="columns is-centered">
+            <div class="column is-one-quarter">
+                <form class='box' action="{% url 'mma:sign_up' %}" method="post"> <!-- Calls the signup function creating the account -->
+                    {% csrf_token %}
+                    <fieldset>
+
+                        <!-- Title -->
+
+                        <h1 class="title" style="text-align: center;">MMA matrix • Sign up</h1>
+
+                        <!-- Username -->  
+                        <div class="field pb-6">
+                            <div class="control">
+                                <input class='input' name="username" id="username" placeholder="Username">
+                            </div>
+                        </div>
+                        
+
+                        <!-- Password -->
+
+                        <div class="field pb-6">
+                            <div class="control">
+                                <input class='input' type="password" name="password" id="password" placeholder="Password">
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+
+                        <div class="field pb-6">
+                            <div class="control">
+                                <input class='input' name="email" id="email" placeholder="Email">
+                            </div>
+                        </div>
+
+
+                        <!-- First Name -->
+
+                        <div class="field pb-6">
+                            <div class="control">
+                                <input class='input' name="first" id="first" placeholder="Forename">
+                            </div>
+                        </div>
+
+                        <!-- Last Name -->
+
+                        <div class="field pb-6">
+                            <div class="control">
+                                <input class='input' name="last" id="last" placeholder="Surname">
+                            </div>
+                        </div>
+
+                        <!-- Sumbit button -->
+
+                        <input class="button is-info is-fullwidth" type="submit" value="Sign up">
+                        {% if error %}
+                            <p class="help is-danger mt-3" style="text-align: center;">{{error}}</p>
+                        {% endif %}
+
+                    </fieldset>
+                </form>
+
+                <p class="box">Already have an account? <a href="{% url 'mma:login' %}">Log in</a></p>
+
+            </div>
+        </div>
+    </section>
+
+</body>

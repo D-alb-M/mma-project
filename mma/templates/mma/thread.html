@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <section class="section">
+
+        <div class="columns is-centered">
+    
+            <div class="columns is-half">
+    
+                <div class="box">
+    
+                    <!-- Thread Main --><!-- Thread Main --><!-- Thread Main --><!-- Thread Main --><!-- Thread Main -->
+    
+                    <div class="block">
+
+                        <form action="{% url 'mma:create_thread' %}" method="post">
+
+                            {% csrf_token %}
+                            
+                            <p>
+                                <label for="thread_title">Thread title* </label>
+                                <input name="thread_title" id="thread_title" value="" required>
+                            </p>
+                    
+                            <p>
+                                <label for="thread_text">Thread text* </label>
+                                <input name="thread_text" id="thread_text" value="" required>
+                            </p>
+                    
+                            <input type="submit" value="post">
+                    
+                        
+                    
+                        </form>
+                    
+                    
+                        {% for thread in threads %}
+                            <div class="box">
+                                <span style="font-size: large;"><a href="{% url 'mma:viewdiscussion' thread.id %}"><strong>{{ thread.thread_title }}</strong></a></span> 
+                                <br>
+                                {{ thread.thread_text }}
+                            </div>  
+                            
+                            
+                            <br>
+                        {% endfor %}
+                        
+                    </div>
+                
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    
+</body>
+
+</html>

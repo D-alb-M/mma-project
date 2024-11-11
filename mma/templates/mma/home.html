@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+
+        {% for card in cards %}
+            <p>{{ card.name }}</p>
+            {% for fight in card.fight_set.all %}
+                {{ sections.0.name }} <br>
+                <br>
+                {% if fight.section.name == sections.all.0.name %}
+                    {% if fight.fighters.all %}
+                        <a href="{% url 'mma:fighterpage' fight.fighters.all.0.id %}">{{ fight.fighters.all.0.name_text }}</a> vs <a href="{% url 'mma:fighterpage' fight.fighters.all.1.id %}">{{ fight.fighters.all.1.name_text }}</a> <br>
+                        {{ fight.win_method }} <br>
+                        {{ fight.type.name }} <br>
+                        {{ fight.division.name }} <br>
+                        <a href="{% url 'mma:fightpage' fight.id %}">View fight</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% for fight in card.fight_set.all %}
+            <br>
+                {{ sections.1.name }} <br>
+                <br>
+                {% if fight.section.name == sections.all.1.name %}
+                    {% if fight.fighters.all %}
+                        <a href="{% url 'mma:fighterpage' fight.fighters.all.0.id %}">{{ fight.fighters.all.0.name_text }}</a> vs <a href="{% url 'mma:fighterpage' fight.fighters.all.1.id %}">{{ fight.fighters.all.1.name_text }}</a> <br>
+                        {{ fight.win_method }} <br>
+                        {{ fight.type.name }} <br>
+                        {{ fight.division.name }} <br>
+                        <a href="{% url 'mma:fightpage' fight.id %}">View fight</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% for fight in card.fight_set.all %}
+                <br>
+                {{ sections.2.name }} <br>
+                <br>
+                {% if fight.section.name == sections.all.2.name %}
+                    {% if fight.fighters.all %}
+                        <a href="{% url 'mma:fighterpage' fight.fighters.all.0.id %}">{{ fight.fighters.all.0.name_text }}</a> vs <a href="{% url 'mma:fighterpage' fight.fighters.all.1.id %}">{{ fight.fighters.all.1.name_text }}</a> <br>
+                        {{ fight.win_method }} <br>
+                        {{ fight.type.name }} <br>
+                        {{ fight.division.name }} <br>
+                        <a href="{% url 'mma:fightpage' fight.id %}">View fight</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+        <a href="{% url 'mma:viewcard' card.id %}">View {{ card.name }}</a>
+
+
+        {% endfor %}
+
+
+    
+
+</body>

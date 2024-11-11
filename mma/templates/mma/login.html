@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light"></html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login • MMA matrix</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+
+
+</head>
+
+<body>
+
+    
+    <section class="section mt-6">
+        <div class="columns is-centered">
+
+            <div class="column is-one-quarter">
+                <form class="box" action="{% url 'mma:authorisation' %}" method="post">
+
+                    {% csrf_token %}
+
+                    <!-- Title -->
+
+                    <h1 class="title" style="text-align: center;">MMA matrix • Log in</h1>
+
+
+                    <!-- Username -->
+
+                    <div class="field pb-6">
+                        <div class="control">
+                            <input class="input" name="username" id="username" placeholder="Username">
+                        </div>
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="field pb-6">
+                        <div class="control">
+                            <input class="input" name="password" id="password" type="password" placeholder="Password">
+                        </div>
+                    </div>
+
+
+                    <!-- Sumbit button -->
+
+                    <input class="button is-info is-fullwidth" type="submit" value="Log in">
+                    {% if error %}
+                        <p class="help is-danger mt-3" style="text-align: center;">{{error}}</p>
+                    {% endif %}
+
+                </form>
+
+                <p class="box">Don't have an account? <a href="{% url 'mma:signup' %}">Sign up</a></p>
+
+            </div>
+        </div>
+    </section>
+</body>

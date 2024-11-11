@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{ fight.fighters.all.0.name_text }} vs {{ fight.fighters.all.1.name_text }}
+    {{fight.id}}
+
+    <form action="{% url 'mma:post_fight_review' fight.id %}" method="post">
+
+        {% csrf_token %}
+        
+        <label for="review">Review: </label>
+        <input name="review" id="review" value="">
+        <input type="submit" value="post">
+
+        {% for review in reviews_list %}
+            <p>{{ review.rev_text }}</p>
+        {% endfor %}
+
+
+    
+
+    </form>
+
+</body>
+</html>
